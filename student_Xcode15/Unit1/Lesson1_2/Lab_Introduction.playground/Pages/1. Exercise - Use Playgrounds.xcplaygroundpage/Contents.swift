@@ -10,14 +10,14 @@ print("How to use playgrounds to make writing Swift fun and simple")
 /*:
  Now print your own phrases to the console. Pick one of your favorite songs. Use your knowledge of the `print` function to display the song title and artist.
  */
-
+print("What It's Like (song title) by Everlast (artist)") 
 
 /*:
  Use multiple `print` functions to write out some of the lyrics to the song.
  */
-
-
-
+print("Then you really might know what it's like")
+print("Then you really might know what it's like")
+print("Then you really might know what it's like to have to lose")
 /*:
 
  _Copyright © 2023 Apple Inc._
