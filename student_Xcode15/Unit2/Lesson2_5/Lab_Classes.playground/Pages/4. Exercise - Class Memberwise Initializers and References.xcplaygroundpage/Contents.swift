@@ -7,7 +7,13 @@ class Spaceship {
     let name: String
     var health: Int
     var position: Int
-
+    
+    init(name: String, health: Int = 100, position: Int = 0){
+        self.name = name
+        self.health = health
+        self.position = position
+    }
+        
     func moveLeft() {
         position -= 1
     }
@@ -27,7 +33,13 @@ class Spaceship {
 class Fighter: Spaceship {
     let weapon: String
     var remainingFirePower: Int
-
+    
+    init(name: String, weapon: String, remainingFirePower: Int = 5){
+        self.weapon = weapon
+        self.remainingFirePower = remainingFirePower
+        super.init(name: name, health: 100, position: 0)
+    }
+    
     func fire() {
         if remainingFirePower > 0 {
             remainingFirePower -= 1
@@ -39,6 +51,11 @@ class Fighter: Spaceship {
 
 class ShieldedShip: Fighter {
     var shieldStrength: Int
+    
+    init(name: String, weapon: String, shieldStrength: Int = 25, remainingFirePower: Int = 5, health: Int = 100, position: Int = 0){
+        self.shieldStrength = shieldStrength
+        super.init(name: name, weapon: weapon, remainingFirePower: remainingFirePower)
+    }
 
     override func wasHit() {
         if shieldStrength > 0 {
@@ -53,6 +70,7 @@ class ShieldedShip: Fighter {
 
  Then create an instance of `Spaceship` below called `falcon`. Use the memberwise initializer you just created. The ship's name should be "Falcon."
  */
+let falcon = Spaceship(name: "Falcon")
 
 
 /*:
@@ -60,18 +78,20 @@ class ShieldedShip: Fighter {
 
  Then create an instance of `Fighter` below called `destroyer`. Use the memberwise initializer you just created. The ship's name should be "Destroyer."
  */
-
+let destroyer = Fighter(name: "Destroyer", weapon: "Laser")
 
 /*:
  Now go add an initializer to `ShieldedShip` that takes an argument for each property on `ShieldedShip`, `Fighter`, and `Spaceship`, and sets the properties accordingly. Remember that you can call through to the initializer on `Fighter` using `super.init`.
 
  Then create an instance of `ShieldedShip` below called `defender`. Use the memberwise initializer you just created. The ship's name should be "Defender."
  */
-
+let defender = ShieldedShip(name: "Defender", weapon: "Cannon", shieldStrength: 25)
 
 //:  Create a new constant named `sameShip` and set it equal to `falcon`. Print out the position of `sameShip` and `falcon`, then call `moveLeft()` on `sameShip` and print out the position of `sameShip` and `falcon` again. Did both positions change? Why? If both were structs instead of classes, would it be the same? Why or why not? Provide your answer in a comment or print statement below.
-
-
+let sameShip = falcon
+print(sameShip.position)
+print(falcon.position)
+//Yes they would be the same because sameShip is a subclass of falcon
 /*:
  _Copyright © 2023 Apple Inc._
 
